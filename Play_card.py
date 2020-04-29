@@ -70,22 +70,21 @@ class Cards():
         # Определяем карту для ответа или принимаем карту игрока 2
         crd_tmp_list = self.cards_player1
         for i in range(len(crd_tmp_list)):
-            # crd_tmp = str(crd_tmp_list[i])
-            # crd_num1 = crd_tmp[0]
-            # crd_mst1 = crd_tmp[1]
-
+            crd_tmp = str(crd_tmp_list[i])
+            crd_num1 = crd_tmp[0]
+            crd_mst1 = crd_tmp[1]
             for j in range(len(self.dict_ves_card)):
-                crd_tmp = str(crd_tmp_list[i])
-                crd_num1 = crd_tmp[0]
-                crd_mst1 = crd_tmp[1]
+                # crd_tmp = str(crd_tmp_list[i])
+                # crd_num1 = crd_tmp[0]
+                # crd_mst1 = crd_tmp[1]
                 tmp = list_ves_crd[j]
                 if crd_num1 == tmp[0]:
                     ves_crd1 = tmp[1]
-                    if  ves_crd1 > ves_crd2 and crd_mst1 == crd_mst2:
-                        self.pole_plr_1 = self.cards_player1.pop(i)
-                        break
-        print('Карта игрока 1 БИТА ', self.pole_plr_1 )
-
+            if  ves_crd1 > ves_crd2 and crd_mst1 == crd_mst2:
+                self.pole_plr_1 = self.cards_player1.pop(i)
+                break
+        print('Карта игрока 2 БИТА ', self.pole_plr_1 )
+        print('карты 1', self.cards_player1)
 
 
 
