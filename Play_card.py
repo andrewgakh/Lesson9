@@ -7,6 +7,7 @@ class Cards():
         self.koloda = ['6B', '6T', '6C', '6P', '7B', '7T', '7C', '7P', '8B', '8T', '8C', '8P', '9B', '9T', '9C', '9P',
                        '10B', '10T', '10C', '10P', 'JB', 'JT', 'JC', 'JP', 'QB', 'QT', 'QC', 'QP', 'KB', 'KT', 'KC', 'KP',
                        'AB', 'AT', 'AC', 'AP']
+        self.dict_ves_card = {'6':6, '7':7, '8':8, '9':9, '10':10, 'J':11, 'Q':12, 'K':13, 'A':14}
         # Игральная колода карт
         self.koloda_play = ['' for i in range(36)]
         self.cards_player1 = []
@@ -55,12 +56,45 @@ class Cards():
         print('карты 2', self.cards_player2)
 
     def otbil_plr_1(self):
-        pass
-    def otbil_plr_1(self):
+        # Определяем вес и масть карты, с которой пошел игрок 2.
+        crd_tmp = str(self.pole_plr_2)
+        crd_num2 = crd_tmp[0]
+        crd_mst2 = crd_tmp[1]    # масть карты
+        list_ves_crd = list(self.dict_ves_card.items())
+        for i in range(len(self.dict_ves_card)):
+            tmp = list_ves_crd[i]
+            if crd_num2 == tmp[0]:
+                ves_crd2 = tmp[1]    # вес карты
+        #print('Карта игрока 2', ves_crd2, crd_mst2)
+
+        # Определяем карту для ответа или принимаем карту игрока 2
+        crd_tmp_list = self.cards_player1
+        for i in range(len(crd_tmp_list)):
+            # crd_tmp = str(crd_tmp_list[i])
+            # crd_num1 = crd_tmp[0]
+            # crd_mst1 = crd_tmp[1]
+
+            for j in range(len(self.dict_ves_card)):
+                crd_tmp = str(crd_tmp_list[i])
+                crd_num1 = crd_tmp[0]
+                crd_mst1 = crd_tmp[1]
+                tmp = list_ves_crd[j]
+                if crd_num1 == tmp[0]:
+                    ves_crd1 = tmp[1]
+                    if  ves_crd1 > ves_crd2 and crd_mst1 == crd_mst2:
+                        self.pole_plr_1 = self.cards_player1.pop(i)
+                        break
+        print('Карта игрока 1 БИТА ', self.pole_plr_1 )
+
+
+
+
+    def otbil_plr_2(self):
         pass
 if __name__ == '__main__':
     card_game = Cards()
     card_game.mix_koloda()
     card_game.give_cards()
-    card_game.hod_plr_1()
+    #card_game.hod_plr_1()
     card_game.hod_plr_2()
+    card_game.otbil_plr_1()
