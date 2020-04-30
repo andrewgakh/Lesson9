@@ -80,7 +80,8 @@ class Cards():
                 break
         #  Определяем мин. козырь
         if self.win_plr_1 == 0:
-            min = self.kozyr[2]
+            # min = self.kozyr[2]
+            min = 14
             crd_tmp_list = self.cards_player1
             for i in range(len(crd_tmp_list)):
                 crd_tmp = crd_tmp_list[i]
@@ -127,7 +128,8 @@ class Cards():
                 break
         #  Определяем мин. козырь
         if self.win_plr_2 == 0:
-            min = self.kozyr[2]
+            # min = self.kozyr[2]
+            min = 14
             crd_tmp_list = self.cards_player2
             for i in range(len(crd_tmp_list)):
                 crd_tmp = crd_tmp_list[i]
