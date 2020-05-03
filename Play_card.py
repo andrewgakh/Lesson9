@@ -14,11 +14,11 @@ class Cards():
                        ['K', 'B', 13], ['K', 'C', 13], ['K', 'T', 13], ['K', 'P', 13],
                        ['A', 'B', 14], ['A', 'C', 14], ['A', 'T', 14], ['A', 'P', 14]]
         self.koloda_play = ['' for i in range(36)]      # Игральная колода карт
-        self.cards_player1 = []                         # Карты игрока 1
-        self.cards_player2 = []                         # Карты игрока 2
+        self.cards_player2= []                          # Карты игрока 1
+        self.cards_player1 = []                         # Карты игрока 2
         self.kozyr=[]                                   # Козырная карта
-        self.pole_plr_1 = []                            # Ход игрока 1
-        self.pole_plr_2 = []                            # Ход игрока 2
+        self.pole_plr_2 = []                            # Ход игрока 1
+        self.pole_plr_1 = []                            # Ход игрока 2
         self.win_plr_1 = 0                              # Игрок 1 отбил ход игрока 2
         self.win_plr_2 = 0                              # Игрок 2 отбил ход игрока 1
         self.min_koz=[]                                 # Минимальный козырь в картах игрока
@@ -100,9 +100,9 @@ class Cards():
 
         if self.win_plr_1  == 1:
             # Берем по карте из колоды
-            if len(self.cards_player2) < 5:
+            if len(self.cards_player2) < 7:
                     self.cards_player2.append(self.koloda_play.pop(0))
-            elif len(self.cards_player1) < 5:
+            if len(self.cards_player1) < 7:
                     self.cards_player1.append(self.koloda_play.pop(0))
             print('Игрок 1. Карта игрока 2 БИТА ', self.pole_plr_1 )
             print('карты 1', self.cards_player1)
@@ -110,7 +110,7 @@ class Cards():
         else:
             self.win_plr_2 = 1
             # Берет карту из колоды игрок 2
-            if len(self.cards_player2) < 5:
+            if len(self.cards_player2) < 7:
                 self.cards_player2.append(self.koloda_play.pop(0))
             self.cards_player1.append(self.pole_plr_2)
             print('Игрок 1. Карта игрока 2 НЕ БИТА. Принимаю карту ', self.pole_plr_2)
@@ -153,17 +153,17 @@ class Cards():
 
         if self.win_plr_2 == 1:
             # Берем по карте из колоды
-            if len(self.cards_player1) < 5:
+            if len(self.cards_player1) < 7:
                 self.cards_player1.append(self.koloda_play.pop(0))
-            elif len(self.cards_player2) < 5:
-                self.cards_player2.append(self.koloda_play.pop(0))
+            if len(self.cards_player2) < 7:
+                    self.cards_player2.append(self.koloda_play.pop(0))
             print('Игрок 2. Карта игрока 1 БИТА ', self.pole_plr_2)
             print('карты 2', self.cards_player2)
             print('карты 1', self.cards_player1)
         else:
             self.win_plr_1 = 1
             # Берет карту из колоды игрок 1
-            if len(self.cards_player1) < 5:
+            if len(self.cards_player1) < 7:
                 self.cards_player1.append(self.koloda_play.pop(0))
             self.cards_player2.append(self.pole_plr_1)
             print('Карта игрока 1 НЕ БИТА. Принимаю карту ', self.pole_plr_1)
@@ -175,17 +175,18 @@ class Cards():
         koz_flag = 0
 
 if __name__ == '__main__':
-    card_game = Cards()
-    card_game.mix_koloda()
-    card_game.give_cards()
-    card_game.win_plr_1 = 1
-
-    for i in range(3):
-        if card_game.win_plr_1 == 1:
-            card_game.win_plr_1 = 0
-            card_game.hod_plr_1()
-            card_game.otbil_plr_2()
-        elif card_game.win_plr_2 == 1:
-            card_game.win_plr_2 = 0
-            card_game.hod_plr_2()
-            card_game.otbil_plr_1()
+     card_game = Cards()
+    #card_game.otbil_plr_1()
+    # card_game.mix_koloda()
+    # card_game.give_cards()
+    # card_game.win_plr_1 = 1
+    #
+    # for i in range(3):
+    #     if card_game.win_plr_1 == 1:
+    #         card_game.win_plr_1 = 0
+    #         card_game.hod_plr_1()
+    #         card_game.otbil_plr_2()
+    #     elif card_game.win_plr_2 == 1:
+    #         card_game.win_plr_2 = 0
+    #         card_game.hod_plr_2()
+    #         card_game.otbil_plr_1()
